@@ -5,9 +5,7 @@ pipeline {
 
 		    stage('Lint HTML') {
 			    steps {
-				    script{
-				    tidy -q -e index.html
-				    }
+				    sh 'tidy -q -e *.html'
 			    }
 		    }
 		    
@@ -26,6 +24,7 @@ pipeline {
                 }
             }
             
+        
             stage('Push Image to Dockerhub') {
                 steps{
                 script {
