@@ -1,0 +1,23 @@
+apiVersion: apps/v1beta
+kind: Deployment
+metadata:
+  name: devops-nd-capstone-project
+  labels:
+    app: devops-nd-capstone-project
+spec:
+  strategy:
+    type: RollingUpdate
+  replicas: 2
+  selector:
+    matchLabels:
+      app: devops-nd-capstone-project
+  template:
+    metadata:
+      labels:
+        app: devops-nd-capstone-project
+    spec:
+      containers:
+        - name: devops-nd-capstone-project
+          image: babawale/devops-nd-capstone-project:latest
+          ports:
+            - containerPort: 80
