@@ -1,4 +1,9 @@
 pipeline {
+    environment {
+        registry = "babawale/devops-nd-capstone-project"
+        registryCredential = 'dockerhub'
+        appImage = ''
+    }
     
     agent any
     stages {
@@ -17,7 +22,8 @@ pipeline {
     
             stage('Building image') {
                 steps {
-                    sh 'appImage = docker.build registry + ":$BUILD_NUMBER"'
+                script {
+                    appImage = docker.build registry + ":$BUILD_NUMBER"
                     }
                 }
             }
