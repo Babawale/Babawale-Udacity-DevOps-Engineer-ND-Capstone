@@ -1,9 +1,4 @@
 pipeline {
-    environment {
-        registry = "babawale/devops-nd-capstone-project"
-        registryCredential = 'dockerhub'
-        appImage = ''
-        }
     
     agent any
     stages {
@@ -69,5 +64,4 @@ pipeline {
 					}
                 }
             }
-        }
 }
