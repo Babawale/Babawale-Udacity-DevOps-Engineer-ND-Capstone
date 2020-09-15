@@ -42,7 +42,7 @@ pipeline {
             
             stage('Remove local copy of image') {
                 steps{
-                    sh 'docker -rmi appImage'
+                    sh 'docker rmi appImage'
                 
                     }
             }
