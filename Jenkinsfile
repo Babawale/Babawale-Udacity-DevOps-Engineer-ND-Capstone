@@ -5,7 +5,7 @@ pipeline {
 
 		    stage('Lint HTML') {
 			    steps {
-				    sh 'tidy -q -e *.html'
+				    sh 'tidy -q -e index.html'
 			    }
 		    }
 		    
@@ -24,12 +24,6 @@ pipeline {
                 }
             }
             
-            stage('Security Scan of Image') {
-              steps { 
-                 aquaMicroscanner imageName: 'alpine:latest', notCompleted: 'exit 1', onDisallowed: 'fail'
-                 }
-            }
-
             stage('Push Image to Dockerhub') {
                 steps{
                 script {
