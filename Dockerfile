@@ -1,4 +1,4 @@
-FROM nginx:1.19.2
+FROM nginx:latest
 
 RUN rm /usr/share/nginx/html/index.html
 
