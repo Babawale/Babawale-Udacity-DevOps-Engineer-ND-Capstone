@@ -40,13 +40,6 @@ pipeline {
                 }
             }
             
-            stage('Remove local copy of image') {
-                steps{
-                    sh 'docker rmi appImage'
-                
-                    }
-            }
-            
 
             stage('Set up EKS Cluster'){
             steps {
