@@ -2,6 +2,18 @@
     - hosts: [localhost]
       become: yes
       
+      vars:
+        - download_dir: "{{ lookup('env', 'HOME') }}"
+        - eks_region: us-west-2
+        - eks_worker_desiredcount: 2
+        - eks_worker_maxcount: 4
+        - eks_worker_mincount: 2
+        - eks_worker_instancetype: t3a.medium
+        - eks_clustername: devops-nd-capstone-eks-cluster
+        - eks_clusterversion: 1.17
+        - eks_aws_profilename: Olatunde-Udacity
+        - eks_worker_ami: auto
+      
       tasks:
         - name: Get list of locally installed binaries
           command: ls /usr/bin
@@ -30,10 +42,10 @@
           block:
             - name: Download aws-iam-authenticator
               get_url:
-                url: "https://amazon-eks.s3-us-west-2.amazonaws.com/1.14.6/2019-08-22/usr/bin/linux/amd64/aws-iam-authenticator"
+                url: "https://amazon-eks.s3-us-west-2.amazonaws.com/1.17.9/2020-08-04/bin/linux/amd64/aws-iam-authenticator"
                 dest: "{{ download_dir }}/aws-iam-authenticator"
             - name: Move aws-iam-authenticator to /usr/bin
-              command: mv {{ download_dir }}/aws-iam-authenticator /usr/local/usr/bin
+              command: mv {{ download_dir }}/aws-iam-authenticator /usr/bin
             - name: Give users permission to execute
               file:
                 path: /usr/bin/aws-iam-authenticator
@@ -44,7 +56,7 @@
           block:
             - name: Download kubectl
               get_url:
-                url: "https://storage.googleapis.com/kubernetes-release/release/v1.16.2/usr/bin/linux/amd64/kubectl"
+                url: "https://storage.googleapis.com/kubernetes-release/release/v1.16.2/bin/linux/amd64/kubectl"
                 dest: "{{ download_dir }}"
             - name: Move kubectl to /usr/bin
               command: mv {{ download_dir }}/kubectl /usr/bin
