@@ -2,9 +2,9 @@
 
 
 #Installing Ansible
-echo "Installing Ansible"
+#echo "Installing Ansible"
 pip install --upgrade pip && pip install ansible
-echo "Ansible Installed"
+#echo "Ansible Installed"
 
 #Installing Tidy
 echo "Installing Tidy"
@@ -14,8 +14,8 @@ echo "Tidy installed"
 #Installing Hadolint
 echo "Installing Hadolint"
 
-sudo wget -O /bin/hadolint https://github.com/hadolint/hadolint/releases/download/v1.18.0/hadolint-Linux-x86_64 &&\ 
-    sudo chmod +x /bin/hadolint
+sudo wget -O /bin/hadolint https://github.com/hadolint/hadolint/releases/download/v1.18.0/hadolint-Linux-x86_64 &&\
+sudo chmod +x /bin/hadolint
 
 echo "Hadolint Installed"
 
