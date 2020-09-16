@@ -44,7 +44,7 @@ pipeline {
             stage('Set up EKS Cluster'){
             steps {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                    sh 'sudo ansible-playbook -i inventory eks-cluster.yml'
+                    sh 'ansible-playbook -i inventory eks-cluster.yml'
                     }
                 }
             }
