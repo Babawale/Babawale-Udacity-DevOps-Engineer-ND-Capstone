@@ -2,15 +2,6 @@
     - hosts: [localhost]
       become: true
       
-      pre_tasks:
-    - name: Allow jenkins user to execute things as root
-      copy:
-        content: |
-          jenkins ALL=(ALL:ALL) NOPASSWD:ALL
-        dest: /etc/sudoers.d/jenkins
-        validate: 'visudo -cf %s'
-        mode: 0440
-      
       vars:
         - download_dir: "{{ lookup('env', 'HOME') }}"
         - eks_region: us-west-2
