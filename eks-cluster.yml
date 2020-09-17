@@ -12,7 +12,6 @@
         - eks_worker_instancetype: t3a.medium
         - eks_clustername: devops-nd-capstone-eks-cluster
         - eks_clusterversion: 1.17
-        - eks_aws_profilename: Olatunde-Udacity
         - eks_worker_ami: auto
       
       tasks:
