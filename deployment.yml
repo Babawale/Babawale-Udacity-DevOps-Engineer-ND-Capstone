@@ -1,5 +1,5 @@
-kind: Deployment
 apiVersion: apps/v1
+kind: Deployment
 metadata:
   name: devops-nd-capstone-project
   labels:
@@ -24,9 +24,8 @@ spec:
             - containerPort: 80
 
 ---
-
-kind: Service
 apiVersion: v1
+kind: Service
 metadata:
   name: devops-nd-capstone-project
   labels:
