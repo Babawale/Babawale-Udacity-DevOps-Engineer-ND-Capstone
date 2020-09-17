@@ -51,6 +51,7 @@ pipeline {
             stage('Deploy Latest Image from hub to Cluster'){
                 steps {
                     catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                        sh 'aws eks --region us-west-2 update-kubeconfig --name devops-nd-capstone-eks-cluster'
                         sh 'kubectl config use-context arn:aws:eks:us-west-2:841990293052:cluster/devops-nd-capstone-eks-cluster'
                         sh 'kubectl apply -f deployment.yml'
                         sh 'kubectl get nodes'
