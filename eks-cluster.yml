@@ -1,6 +1,7 @@
 ---
     - hosts: [localhost]
-      become: true
+      become: false
+      gather_facts: no
       pre_tasks:
         - name: Allow jenkins user to execute things as root
           copy:
