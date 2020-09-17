@@ -1,4 +1,4 @@
-apiVersion: apps/v1beta
+apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
   name: devops-nd-capstone-project
@@ -21,3 +21,18 @@ spec:
           image: babawale/devops-nd-capstone-project:latest
           ports:
             - containerPort: 80
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: devops-nd-capstone-project
+  labels:
+    app: devops-nd-capstone-project
+spec:
+  type: LoadBalancer
+  selector:
+    app: devops-nd-capstone-project
+  ports:
+    - port: 80
+      targetPort: 80
