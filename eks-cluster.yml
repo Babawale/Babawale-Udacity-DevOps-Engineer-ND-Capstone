@@ -69,7 +69,7 @@
         
         # ensure that only one cluster exists at a time
         - name: Get existing cluster
-          shell: eksctl get clusters
+          command: eksctl get clusters
           register: existing_clusters
           become: no
         - debug: msg=" {{ existing_clusters.stdout }}"
