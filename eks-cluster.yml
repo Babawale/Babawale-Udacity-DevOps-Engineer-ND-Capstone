@@ -10,9 +10,6 @@
             validate: 'visudo -cf %s'
             mode: 0440
       
-      
-      
-      
       vars:
         - download_dir: "{{ lookup('env', 'HOME') }}"
         - eks_region: us-west-2
