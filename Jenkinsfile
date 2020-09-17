@@ -51,8 +51,8 @@ pipeline {
             stage('Deploy Latest Image from hub to Cluster'){
                 steps {
                     catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                    sh 'sudo kubectl apply -f eks-deployment.yml'
-					sh 'sudo kubectl apply -f load-balancer-deploy.yml'
+                    sh 'kubectl apply -f eks-deployment.yml'
+					sh 'kubectl apply -f load-balancer-deploy.yml'
 					}
                 }
             }
