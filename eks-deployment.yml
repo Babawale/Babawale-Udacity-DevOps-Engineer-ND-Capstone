@@ -18,6 +18,7 @@ spec:
     spec:
       containers:
         - name: devops-nd-capstone-project
+          imagePullPolicy: Always
           image: babawale/devops-nd-capstone-project:latest
           ports:
             - containerPort: 80
@@ -36,3 +37,5 @@ spec:
   ports:
     - port: 80
       targetPort: 80
+      nodePort: 30000
+      protocol: TCP

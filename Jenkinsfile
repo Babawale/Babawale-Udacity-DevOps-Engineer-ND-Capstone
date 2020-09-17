@@ -50,11 +50,17 @@ pipeline {
             }
             stage('Deploy Latest Image from hub to Cluster'){
                 steps {
-                    catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                    withAWS(credentials: "aws") {
                     sh 'kubectl apply -f eks-deployment.yml'
 					sh 'kubectl apply -f load-balancer-deploy.yml'
 					}
                 }
             }
+            
+            stage("Cleaning dangling files") {
+                steps{
+                    sh "docker system prune -f"
+                    }
+                }
         }
 }
